@@ -128,16 +128,16 @@ console.log(siralisayilar)
 // 3f çözümü
 
 const tekraredensayilar = [];
+const tekrarEdenObj = {};
 
 for (let i = 0; i < sayilar.length; i++) {
-  let count = 0
-  for (let k = i + 1; k < sayilar.length; k++) {
-    if (sayilar[i] === sayilar[k]) {
-      count++
-    }
-    tekraredensayilar.push(`${sayilar[i]} sayısı ${count} kere tekrar edilmiştir`);
-  }
-  count = 0
+  const sayi = sayilar[i];
+  tekrarEdenObj[sayi] ? tekrarEdenObj[sayi]++ : tekrarEdenObj[sayi] = 1;
+}
+
+for (const sayi in tekrarEdenObj) {
+  const tekrar = tekrarEdenObj[sayi];
+  tekrar > 1 && tekraredensayilar.push(`${sayi} sayısı ${tekrar} kere tekrar edilmiştir`);
 }
 console.log(tekraredensayilar);
 
